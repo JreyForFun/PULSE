@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #F4F6F8;
+    /* Soft light gray from Donezo design */
+    color: #111827;
+    /* text-gray-900 */
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  @media print {
+
+    /* Hide everything by default */
+    body * {
+      visibility: hidden;
+    }
+
+    /* Only show the report content */
+    #report-content,
+    #report-content * {
+      visibility: visible;
+    }
+
+    #report-content {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Ensure table borders show in print */
+    table {
+      border-collapse: collapse !important;
+      width: 100% !important;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd !important;
+      padding: 8px !important;
+    }
+
+    /* Hide scrollbars */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .animate-pulse-fast {
+    animation: pulse-fast 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-fast {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: .5;
+    }
+  }
+}
